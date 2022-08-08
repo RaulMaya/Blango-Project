@@ -20,6 +20,22 @@ import dj_database_url
 
 
 class Dev(Configuration):
+    
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "handlers": {
+            "console": {"class": "logging.StreamHandler", "stream": "ext://sys.stdout"},
+        },
+        # "handlers": {
+        #     "file": {"class": "logging.FileHandler", "filename": "/var/log/blango.log"},
+        # }
+        "root": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        }
+    }
+
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
     # Quick-start development settings - unsuitable for production
@@ -31,8 +47,9 @@ class Dev(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
+    #ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
 
+    ALLOWED_HOSTS = []
 
     # Application definition
 
