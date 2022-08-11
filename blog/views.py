@@ -11,11 +11,13 @@ from django.views.decorators.cache import cache_page
 
 logger = logging.getLogger(__name__)
 
-# Create your views here.
+
 """Cache Examples"""
 # @cache_page(300)
 # @vary_on_headers("Cookie")
 # @vary_on_cookie
+
+# Create your views here.
 
 def index(request):
     posts = Post.objects.filter(published_at__lte=timezone.now())
