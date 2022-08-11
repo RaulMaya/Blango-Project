@@ -187,5 +187,5 @@ class Dev(Configuration):
     CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 class Prod(Dev):
-    DEBUG = values.BooleanValue(True)
+    DEBUG = values.BooleanValue(False)
     SECRET_KEY = values.SecretValue()

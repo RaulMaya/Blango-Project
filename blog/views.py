@@ -5,15 +5,19 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from blog.forms import CommentForm
 import logging 
+from django.views.decorators.cache import cache_page
 
 logger = logging.getLogger(__name__)
 
 # Create your views here.
-
+@cache_page(300)
 def index(request):
+    from django.http import HttpResponse
+    return HttpResponse(str(request.user).encode("ascii"))
     posts = Post.objects.filter(published_at__lte=timezone.now())
     logger.debug("Got %d posts", len(posts))
     return render(request, "blog/index.html", {"posts": posts})
+
 
 
 
