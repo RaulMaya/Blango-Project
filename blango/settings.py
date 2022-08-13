@@ -90,6 +90,7 @@ class Dev(Configuration):
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
+        'debug_toolbar',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -99,6 +100,7 @@ class Dev(Configuration):
     ]
 
     MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -185,6 +187,9 @@ class Dev(Configuration):
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+    INTERNAL_IPS = ["127.0.0.1"]
+
 
 class Prod(Dev):
     DEBUG = values.BooleanValue(False)
