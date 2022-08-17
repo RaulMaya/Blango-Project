@@ -91,6 +91,7 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
+        'blango_auth',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -186,9 +187,12 @@ class Dev(Configuration):
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+    
     CRISPY_TEMPLATE_PACK = "bootstrap5"
 
     INTERNAL_IPS = ["127.0.0.1"]
+
+    AUTH_USER_MODEL = "blango_auth.User"
 
 
 class Prod(Dev):
