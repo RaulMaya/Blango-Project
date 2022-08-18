@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% load blog_extras %}
+{% block title %}Blango Web Page{% endblock %}
 {% block content %}
     <h2>Blog Posts</h2>
+
+    {% row "align-items-md-stretch" %}
     {% for post in posts %}
-    {% row "border-bottom" %}
-        {% col "border-bottom" %}
-            <h3>{{ post.title }}</h3>
-            {% include "blog/post-byline.html" %}
-            <p>{{ post.summary }}</p>
-            <p>
-                ({{ post.content|wordcount }} words)
-                <a href="{% url "blog-post-detail" post.slug %}">Read More</a>
-            </p>
+        {% col "col-md-6" %}
+            {% div "h-100 p-5 text-bg-dark rounded-3" %}
+                <h3>{{ post.title }}</h3>
+                {% include "blog/post-byline.html" %}
+                <p>{{ post.summary }}</p>
+                <p>
+                    ({{ post.content|wordcount }} words)
+                    <a href="{% url "blog-post-detail" post.slug %}">Read More</a>
+                </p>
+            {% enddiv %}
         {% endcol %}
-    {% endrow %}
     {% endfor %}
+    {% endrow %}
 {% endblock %}
