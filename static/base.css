@@ -5,6 +5,13 @@
   line-height: 1;
 }
 
-body {
-  background-color: #f5f6f8;
+.navbar {
+  background-color: #e04f3c;
+  color: black;
+}
+
+.nav-link{
+    text-decoration: none;
+    list-style: none;
+    color: black;
 }
