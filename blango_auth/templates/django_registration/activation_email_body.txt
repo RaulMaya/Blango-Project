@@ -1,4 +1,4 @@
-Hi,
+Hello {{ user.username }},
 
 You registered for Blango, but you need to activate your account within {{ expiration_days }} days.
 
