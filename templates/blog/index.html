@@ -18,7 +18,7 @@
                 <p>{{ post.summary }}</p>
                 <p>
                     ({{ post.content|wordcount }} words)
-                    <a href="{% url "blog-post-detail" post.slug %}"><button class="btn btn-outline-light" type="button">Read More</button></a>
+                    <a href="{% url "blog-post-detail" post.slug %}"><button class="btn" type="button">Read More</button></a>
                 </p>
             {% enddiv %}
         {% endcol %}
