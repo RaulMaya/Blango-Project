@@ -1,32 +1,41 @@
 {% extends "base.html" %}
+{% load static %}
 {% load blog_extras %}
 {% load blog_extras cache %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>{{ post.title }}</h2>
-{% row %}
-    {% col %}
-        {% include "blog/post-byline.html" %}
-    {% endcol %}
-{% endrow %}
-{% row %}
-    {% col %}
-        {{ post.content|safe }}
-    {% endcol %}
-{% endrow %}
-    {% if post.author.profile %}
-        {% row %}
-            {% col %}
-                <h4>About the author</h4>
-                <p>{{ post.author.profile.bio }}</p>
-            {% endcol %}
-        {% endrow %}
-    {% endif %}
-    {% include "blog/post-comments.html" %}
-{% row %}
-    {% col %}
-    {% cache 3600 recent_posts %}
-        {% recent_posts post %}
-    {% endcache %}
-    {% endcol %}
-{% endrow %}
+{% div "container" %}
+    <h2>{{ post.title }}</h2>
+    {% row %}
+        {% col %}
+            {% include "blog/post-byline.html" %}
+        {% endcol %}
+    {% endrow %}
+    {% row %}
+        {% col %}
+            {{ post.content|safe }}
+        {% endcol %}
+        {% col %}
+        {% cache 3600 recent_posts %}
+            {% recent_posts post %}
+        {% endcache %}
+        {% endcol %}
+    {% endrow %}
+
+
+        {% if post.author.profile %}
+            {% row %}
+                {% col %}
+                    <h4>About the author</h4>
+                    <p>{{ post.author.profile.bio }}</p>
+                {% endcol %}
+            {% endrow %}
+        {% endif %}
+        {% include "blog/post-comments.html" %}
+{% enddiv %}
+
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load blog_extras %}
-{% block title %}Blango Web Page{% endblock %}
+{% block title %}Video Games Reviews{% endblock %}
 
 {% block css_files %}
     <link rel="stylesheet" href="{% static 'blog/index.css' %}">
@@ -17,7 +17,7 @@
                 {% include "blog/post-byline.html" %}
                 <p>{{ post.summary }}</p>
                 <p>
-                    ({{ post.content|wordcount }} words)
+                    <b>({{ post.content|wordcount }} words)</b>
                     <a href="{% url "blog-post-detail" post.slug %}"><button class="btn" type="button">Read More</button></a>
                 </p>
             {% enddiv %}

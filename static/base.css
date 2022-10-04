@@ -1,8 +1,10 @@
+body {
+  background-color: whitesmoke;
+}
 
 .navbar {
   background-color: #440047;
   color: white;
-  border-bottom: 2px solid #E11D74;
 }
 
 .nav-link{
@@ -16,3 +18,33 @@
   list-style: none;
   color: white;
 }
+
+.nav-link:hover {
+  color: white;
+}
+
+nav a {
+    text-decoration: none;
+    color: #E11D74;
+    position: relative;
+  }
+
+nav a::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #E11D74;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+
+  @media (hover: hover) and (pointer: fine) {
+    nav a:hover::before{
+      left: 0;
+      right: auto;
+      width: 100%;
+    }
+  }
